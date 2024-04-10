@@ -18,7 +18,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api", router);
 // Route pour obtenir tous les utilisateurs
-
+router.get("/test", (req, res => {
+  res.send("ceci est un test")
+}))
 
 // Démarrage du serveur sur le port 3001
 app.listen(PORT, () => {
