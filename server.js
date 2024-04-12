@@ -3,8 +3,8 @@ import { pool, asyncQuery } from './config/db.js';
 import router from './routes/routes.js';
 
 const app = express();
-const PORT = 3001;
 
+const baseUrl = process.env.
 // Middleware pour gérer les requêtes d'origine croisée
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -24,5 +24,5 @@ router.get('/test', (req, res) => {
 
 // Démarrage du serveur sur le port 3001
 app.listen(PORT, () => {
-  console.log(`Le serveur est démarré à http://localhost:${PORT}`);
+  console.log(`Le serveur est démarré à BASEURL=http://isaac-marshall.mds-nantes.yt/api`);
 });
