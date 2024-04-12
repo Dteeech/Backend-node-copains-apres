@@ -23,6 +23,6 @@ router.get('/test', (req, res) => {
 })
 
 // Démarrage du serveur sur le port 3001
-app.listen(PORT, () => {
+app.listen(baseUrl, () => {
   console.log(`Le serveur est démarré à BASEURL=${baseUrl}`);
 });
