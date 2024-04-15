@@ -1,6 +1,6 @@
 import { pool } from "../../config/db.js"
 
-const getUserChats = (req, res) => {
+const getUser = (req, res) => {
     try {
         const { id } = req.params
     
@@ -8,8 +8,8 @@ const getUserChats = (req, res) => {
             return res.status(400).json({ error: 'Il manque des paramètres à cette requête' })
         }
     
-        let sql = "SELECT * FROM Chat WHERE id_emitter = ? OR id_receiver = ?"
-        pool.query(sql, [id, id], (err, result) => {
+        let sql = "SELECT * FROM User WHERE id_user = ?"
+        pool.query(sql, [id], (err, result) => {
             if (err) {
                 console.error('Error executing SQL query:', err)
                 return res.status(500).json({ error: 'Internal server error' })
@@ -21,4 +21,4 @@ const getUserChats = (req, res) => {
     }
 }
 
-export default getUserChats
+export default getUser

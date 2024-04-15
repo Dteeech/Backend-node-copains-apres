@@ -12,12 +12,12 @@ const getAdvert = (req, res) => {
         pool.query(sql, [id], (err, result) => {
             if (err) {
                 console.error('Error executing SQL query:', err)
-                return res.status(400).json({ error: 'Bad request' })
+                return res.status(500).json({ error: 'Internal server error' })
             }
             res.json({ result })
         })
     } catch (error) {
-        res.status(500).json({ "msg": "Internal server error" });
+        res.status(500).json({ error : 'Internal server error' })
     }
 }
 
