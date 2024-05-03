@@ -3,6 +3,7 @@ import getAllUsers from '../controllers/get/getAllUsers.js'
 import getAllAdverts from '../controllers/get/getAllAdverts.js'
 import getUserChats from '../controllers/get/getUserChats.js'
 import getUser from '../controllers/get/getUser.js'
+import getCompanies from '../controllers/get/getCompanies.js'
 import getAdvert from '../controllers/get/getAdvert.js'
 import deleteUser from '../controllers/delete/deleteUser.js'
 import deleteAdvert from '../controllers/delete/deleteAdvert.js'
@@ -26,14 +27,14 @@ const publicRoutes = [
     { path: '/users/:id', method: 'get', handler: getUser }, // fonctionne
     { path: '/adverts/:id', method: 'get', handler: getAdvert }, // fonctionne
     { path: '/users', method: 'get', handler: getAllUsers }, // fonctionne
-    { path: 'users/private-individuals', method: 'get', handler: getPrivateIndividuals }, // ne fonctionne pas
-    { path: 'users/companies', method: 'get', handler: getCompanies}, // ne fonctionne pas
-    { path: '/adverts/category/:category', method: 'get', handler: getAdvertByCategory },
+    { path: '/users/private-individuals', method: 'get', handler: getPrivateIndividuals }, // ne fonctionne pas (pb route car affiche résultat même quand mis en commentaires)
+    { path: '/users/companies', method: 'get', handler: getCompanies}, // ne fonctionne pas (pb route)
+    { path: '/adverts/category/:category', method: 'get', handler: getAdvertByCategory }, // fonctionne
 
 //Routes post
 { path: '/adverts', method: 'post', handler: createAdvert },
 { path: '/users', method: 'post', handler: createUser }, // fonctionne
-{ path: '/users/companies', method: 'post', handler: createCompany }, // il faut check l'ajout du siret sur user
+{ path: '/users/companies', method: 'post', handler: createCompany }, // fonctionne
 
 //Routes update
 { path: '/users/:id', method: 'put', handler: updateUser }, // fonctionne

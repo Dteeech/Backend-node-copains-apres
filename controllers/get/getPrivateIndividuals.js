@@ -2,7 +2,7 @@ import {pool} from "../../config/db.js"
 
  const getPrivateIndividuals = (req, res) => {
     try {
-        let sql = "SELECT * FROM User WHERE id_company=''"
+        let sql = "SELECT * FROM User LEFT JOIN company ON User.id_company = Company.siret WHERE Company.siret is NULL"
         pool.query(sql,(err, result) =>{
             if(err) throw err
             res.json({result})
