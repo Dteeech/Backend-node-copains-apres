@@ -6,7 +6,7 @@ import getUser from '../controllers/get/getUser.js'
 import getAdvert from '../controllers/get/getAdvert.js'
 import deleteUser from '../controllers/delete/deleteUser.js'
 import deleteAdvert from '../controllers/delete/deleteAdvert.js'
-import createUser from '../controllers/post/createUser.js'
+import * as authController from '../controllers/auth/authController.js'
 import { isAuthenticated } from '../middleware/auth.js'
 
 const router = express.Router()
@@ -23,8 +23,8 @@ const publicRoutes = [
 
     //Routes post
 
-    { path: '/users', method: 'post', handler: createUser },
-
+    
+    {path: '/create-user', method: 'post', handler: authController.register},
 
     //Routes update
 
