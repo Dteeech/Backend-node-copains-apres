@@ -14,6 +14,7 @@ import updateAdvert from '../controllers/put/updateAdvert.js'
 import deleteCompany from '../controllers/delete/deleteCompany.js'
 import getPrivateIndividuals from '../controllers/get/getPrivateIndividuals.js'
 import getAdvertByCategory from '../controllers/get/getAdvertByCategory.js'
+import * as authController from '../controllers/auth/authController.js'
 import { isAuthenticated } from '../middleware/auth.js'
 import createAdvert from '../controllers/post/createAdvert.js'
 const router = express.Router()
@@ -35,6 +36,7 @@ const publicRoutes = [
 { path: '/adverts', method: 'post', handler: createAdvert },
 { path: '/users', method: 'post', handler: createUser }, // fonctionne
 { path: '/users/companies', method: 'post', handler: createCompany }, // fonctionne
+{path: '/create-user', method: 'post', handler: authController.register},
 
 //Routes update
 { path: '/users/:id', method: 'put', handler: updateUser }, // fonctionne
