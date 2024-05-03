@@ -7,36 +7,45 @@ import getAdvert from '../controllers/get/getAdvert.js'
 import deleteUser from '../controllers/delete/deleteUser.js'
 import deleteAdvert from '../controllers/delete/deleteAdvert.js'
 import createUser from '../controllers/post/createUser.js'
+import createCompany from '../controllers/post/createCompany.js'
+import updateUser from '../controllers/put/updateUser.js'
+import updateAdvert from '../controllers/put/updateAdvert.js'
+import deleteCompany from '../controllers/delete/deleteCompany.js'
+import getPrivateIndividuals from '../controllers/get/getPrivateIndividuals.js'
+import getAdvertByCategory from '../controllers/get/getAdvertByCategory.js'
 import { isAuthenticated } from '../middleware/auth.js'
-
+import createAdvert from '../controllers/post/createAdvert.js'
 const router = express.Router()
 
 const publicRoutes = [
     //Routes get
-    { path: '/users', method: 'get', handler: getAllUsers },
-    { path: '/adverts', method: 'get', handler: getAllAdverts },
-    { path: '/users/:id/chats', method: 'get', handler: getUserChats },
+    { path: '/users', method: 'get', handler: getAllUsers }, // fonctionne
+    { path: '/adverts', method: 'get', handler: getAllAdverts }, // fonctionne
+    { path: '/users/:id/chats', method: 'get', handler: getUserChats }, // fontionne
     // test : http://localhost:3001/api/user-chats?id_emitter=1&id_receiver=2
-    { path: '/users/:id', method: 'get', handler: getUser },
-    { path: '/adverts/:id', method: 'get', handler: getAdvert },
+    { path: '/users/:id', method: 'get', handler: getUser }, // fonctionne
+    { path: '/adverts/:id', method: 'get', handler: getAdvert }, // fonctionne
+    { path: '/users', method: 'get', handler: getAllUsers }, // fonctionne
+    { path: 'users/private-individuals', method: 'get', handler: getPrivateIndividuals }, // ne fonctionne pas
+    { path: 'users/companies', method: 'get', handler: getCompanies}, // ne fonctionne pas
+    { path: '/adverts/category/:category', method: 'get', handler: getAdvertByCategory },
 
+//Routes post
+{ path: '/adverts', method: 'post', handler: createAdvert },
+{ path: '/users', method: 'post', handler: createUser }, // fonctionne
+{ path: '/users/companies', method: 'post', handler: createCompany }, // il faut check l'ajout du siret sur user
 
-    //Routes post
+//Routes update
+{ path: '/users/:id', method: 'put', handler: updateUser }, // fonctionne
+{ path: '/adverts/id', method: 'put', handler: updateAdvert }, // fonctionne
 
-    { path: '/users', method: 'post', handler: createUser },
-
-
-    //Routes update
-
-
-    //Routes delete
-    { path: '/users/:id', method: 'delete', handler: deleteUser },
-    { path: '/adverts/:id', method: 'delete', handler: deleteAdvert }
+//Routes delete
+{ path: '/users/:id', method: 'delete', handler: deleteUser }, // fonctionne
+{ path: '/adverts/:id', method: 'delete', handler: deleteAdvert }, // fonctionne
+{ path: '/users/companies/:siret', method: 'delete', handler: deleteCompany }, // fonctionne
 ]
 
-
 const protectedRoutes = [
-
 ]
 
 publicRoutes.map(route => router[route.method](route.path, route.handler))

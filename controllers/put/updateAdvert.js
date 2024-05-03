@@ -1,28 +1,25 @@
 import { pool } from "../../config/db.js"
 
-const createUser = (req, res) => {
+const updateAdvert = (req, res) => {
     try {
-
-        const { first_name, last_name, email, password } = req.body
+        const { id } = req.params
+        const { title, description, location } = req.body
     
-        if (!first_name || !last_name || !email || !password) {
+        if (!title || !description || !location || !id) {
             return res.status(400).json({ error: 'Il manque des paramètres à cette requête' })
         }
-
-        let sql = "INSERT INTO User (first_name, last_name, email, password, is_admin) VALUES (?, ?, ?, ?, 0)"
-        pool.query(sql, [first_name, last_name, email, password], (err, result) => {
+    
+        let sql = "UPDATE Advert SET title = ?, description = ?, location = ? WHERE id_advert = ?"
+        pool.query(sql, [title, description, location, id], (err, result) => {
             if (err) {
                 console.error('Error executing SQL query:', err)
                 return res.status(500).json({ error : 'Internal server error' })
             }
-
             res.json({ result })
         })
-
     } catch (error) {
         res.status(500).json({ error : 'Internal server error' })
     }
-
 }
 
-export default createUser
+export default updateAdvert

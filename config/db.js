@@ -1,4 +1,4 @@
-import mysql from "mysql";
+import mysql from "mysql"
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -12,26 +12,26 @@ export const pool = mysql.createPool({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
     socketPath: process.env.DB_SOCKET_PATH,
-});
+})
 
 // Vérifier la connexion à la base de données
 pool.getConnection((err, connection) => {
   if (err) {
-    console.error("Erreur de connexion à la base de données:", err.message);
+    console.error("Erreur de connexion à la base de données:", err.message)
   } else {
-    console.log("Connecté à la base de données!");
-    connection.release(); // Libérer la connexion après la vérification
+    console.log("Connecté à la base de données!")
+    connection.release() // Libérer la connexion après la vérification
   }
-});
+})
 
 // permet d'obtenir le resultat des requetes SQL async
 export const asyncQuery = async (sql, params = []) => {
   return new Promise((resolve, reject) => {
     pool.query(sql, params, (error, result) => {
       if (error) {
-        return reject(error);
+        return reject(error)
       }
-      return resolve(result);
-    });
-  });
-};
+      return resolve(result)
+    })
+  })
+}

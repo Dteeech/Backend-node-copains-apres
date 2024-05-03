@@ -1,8 +1,8 @@
 import {pool} from "../../config/db.js"
 
-const getAllAdverts = (req, res) => {
+ const getPrivateIndividuals = (req, res) => {
     try {
-        let sql = "SELECT * FROM Advert"
+        let sql = "SELECT * FROM User WHERE id_company=''"
         pool.query(sql,(err, result) =>{
             if(err) throw err
             res.json({result})
@@ -11,4 +11,4 @@ const getAllAdverts = (req, res) => {
         res.status(500).json({ error : 'Internal server error' })
     }
 }
-export default getAllAdverts
+export default getPrivateIndividuals
