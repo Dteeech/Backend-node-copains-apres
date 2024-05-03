@@ -4,35 +4,42 @@ import getAllAdverts from '../controllers/get/getAllAdverts.js'
 import getUserChats from '../controllers/get/getUserChats.js'
 import getUser from '../controllers/get/getUser.js'
 import getAdvert from '../controllers/get/getAdvert.js'
-import getAdvertByCategory from '../controllers/get/getAdvertByCategory.js'
 import deleteUser from '../controllers/delete/deleteUser.js'
 import deleteAdvert from '../controllers/delete/deleteAdvert.js'
-import createAdvert from '../controllers/post/createAdvert.js'
 import createUser from '../controllers/post/createUser.js'
-import createCompany from '../controllers/post/createCompany.js'
-import updateUser from '../controllers/put/updateUser.js'
+import { isAuthenticated } from '../middleware/auth.js'
+
 const router = express.Router()
 
+const publicRoutes = [
+    //Routes get
+    { path: '/users', method: 'get', handler: getAllUsers },
+    { path: '/adverts', method: 'get', handler: getAllAdverts },
+    { path: '/users/:id/chats', method: 'get', handler: getUserChats },
+    // test : http://localhost:3001/api/user-chats?id_emitter=1&id_receiver=2
+    { path: '/users/:id', method: 'get', handler: getUser },
+    { path: '/adverts/:id', method: 'get', handler: getAdvert },
 
-//Routes get
-router.get('/users', getAllUsers )
-router.get('/adverts', getAllAdverts )
-router.get('/users/:id/chats', getUserChats) 
-// test : http://localhost:3001/api/user-chats?id_emitter=1&id_receiver=2
-router.get('/users/:id', getUser) 
-router.get('/adverts/:id', getAdvert) 
-router.get('/adverts/:category', getAdvertByCategory) 
 
-//Routes post
-router.post('/adverts', createAdvert)
-router.post('/users', createUser)
-router.post('/users/companies', createCompany)
+    //Routes post
 
-//Routes update
-router.put('/users/:id', updateUser)
+    { path: '/users', method: 'post', handler: createUser },
 
-//Routes delete
-router.delete('/users/:id', deleteUser)
-router.delete('/adverts/:id', deleteAdvert)
 
+    //Routes update
+
+
+    //Routes delete
+    { path: '/users/:id', method: 'delete', handler: deleteUser },
+    { path: '/adverts/:id', method: 'delete', handler: deleteAdvert }
+]
+
+
+const protectedRoutes = [
+
+]
+
+publicRoutes.map(route => router[route.method](route.path, route.handler))
+router.use(isAuthenticated)
+protectedRoutes.map(route => router[route.method](route.path, route.handler))
 export default router
