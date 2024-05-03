@@ -2,8 +2,8 @@ import { pool } from "../../config/db.js"
 
 const updateAdvert = (req, res) => {
     try {
-        const { id } = req.params;
-        const { title, description, location } = req.body;
+        const { id } = req.params
+        const { title, description, location } = req.body
     
         if (!title || !description || !location || !id) {
             return res.status(400).json({ error: 'Il manque des paramètres à cette requête' })
@@ -20,6 +20,6 @@ const updateAdvert = (req, res) => {
     } catch (error) {
         res.status(500).json({ error : 'Internal server error' })
     }
-};
+}
 
-export default updateAdvert;
+export default updateAdvert

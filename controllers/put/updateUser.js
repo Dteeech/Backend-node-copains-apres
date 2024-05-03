@@ -12,7 +12,7 @@ const updateUser = (req, res) => {
         let sql = "UPDATE User SET first_name = ?, last_name = ?, email = ?, password = ?, age = ?, description = ?, picture = ? WHERE id_user = ?"
         pool.query(sql, [first_name, last_name, email, password, age, description, picture, id], (err, result) => {
             if (err) {
-                console.error('Error executing SQL query:', err);
+                console.error('Error executing SQL query:', err)
                 return res.status(500).json({ error : 'Internal server error' })
             }
 

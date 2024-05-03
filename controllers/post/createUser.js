@@ -12,7 +12,7 @@ const createUser = (req, res) => {
         let sql = "INSERT INTO User (first_name, last_name, email, password, is_admin) VALUES (?, ?, ?, ?, 0)"
         pool.query(sql, [first_name, last_name, email, password], (err, result) => {
             if (err) {
-                console.error('Error executing SQL query:', err);
+                console.error('Error executing SQL query:', err)
                 return res.status(500).json({ error : 'Internal server error' })
             }
 
