@@ -32,7 +32,7 @@ router.get('/adverts/category/:category', getAdvertByCategory) //fonctionne
 //Routes post
 router.post('/adverts', createAdvert)
 router.post('/users', createUser) // fonctionne
-router.post('/users/companies', createCompany)
+router.post('/users/companies', createCompany) // il faut check l'ajout du siret sur user
 
 //Routes update
 router.put('/users/:id', updateUser) // fonctionne

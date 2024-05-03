@@ -2,7 +2,7 @@ import {pool} from "../../config/db.js"
 
  const getCompanies = (req, res) => {
     try {
-        let sql = "SELECT * FROM User NATURAL JOIN Company"
+        let sql = "SELECT * FROM User JOIN Company ON User.id_company = Company.siret"
         pool.query(sql,(err, result) =>{
             if(err) throw err
             res.json({result})
