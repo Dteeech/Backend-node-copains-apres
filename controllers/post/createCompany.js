@@ -15,7 +15,7 @@ const createCompany = (req, res) => {
                 return res.status(500).json({ error : 'Internal server error' })
             }
 
-            let sql1 = "INSERT INTO User (email, password, id_company, is_admin) VALUES (?, ?, ?, ?, ?, 0)"
+            let sql1 = "INSERT INTO User (email, password, id_company, is_admin) VALUES (?, ?, ?, 0)"
             pool.query(sql1, [email, password, siret], (err, result) => {
             if (err) {
                 console.error('Error executing SQL query:', err)
