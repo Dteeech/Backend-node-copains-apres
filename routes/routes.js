@@ -13,13 +13,15 @@ import createCompany from '../controllers/post/createCompany.js'
 import updateUser from '../controllers/put/updateUser.js'
 import updateAdvert from '../controllers/put/updateAdvert.js'
 import deleteCompany from '../controllers/delete/deleteCompany.js'
+import getPrivateIndividuals from '../controllers/get/getPrivateIndividuals.js'
+import getCompanies from '../controllers/get/getCompanies.js'
 const router = express.Router()
 
 
 //Routes get
 router.get('/users', getAllUsers ) // fonctionne
-// requête pour trouver seulement les users
-// requête pour trouver seulement les entreprises ?
+router.get('users/private-individuals', getPrivateIndividuals)
+router.get('users/companies', getCompanies)
 router.get('/adverts', getAllAdverts ) // fonctionne
 router.get('/users/:id/chats', getUserChats) 
 // test : http://localhost:3001/api/user-chats?id_emitter=1&id_receiver=2
