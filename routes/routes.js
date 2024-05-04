@@ -26,7 +26,7 @@ const publicRoutes = [
     // test : http://localhost:3001/api/user-chats?id_emitter=1&id_receiver=2
     { path: '/adverts/:id', method: 'get', handler: getAdvert }, // fonctionne
     { path: '/users/private-individuals', method: 'get', handler: getPrivateIndividuals }, // ne fonctionne pas (pb route car affiche résultat même quand mis en commentaires)
-    { path: '/users/companies', method: 'get', handler: getCompanies}, // ne fonctionne pas (pb route)
+    { path: '/users/companies', method: 'get', handler: getCompanies }, // ne fonctionne pas (pb route)
     { path: '/adverts/category/:category', method: 'get', handler: getAdvertByCategory }, // fonctionne
     { path: '/users', method: 'get', handler: getAllUsers }, // fonctionne
     { path: '/users/:id', method: 'get', handler: getUser }, // fonctionne
@@ -37,14 +37,14 @@ const publicRoutes = [
 { path: '/users/companies', method: 'post', handler: createCompany }, // fonctionne
 {path: '/create-user', method: 'post', handler: authController.register},
 
-//Routes update
-{ path: '/users/:id', method: 'put', handler: updateUser }, // fonctionne
-{ path: '/adverts/id', method: 'put', handler: updateAdvert }, // fonctionne
+    //Routes update
+    { path: '/users/:id', method: 'put', handler: updateUser }, // fonctionne
+    { path: '/adverts/id', method: 'put', handler: updateAdvert }, // fonctionne
 
-//Routes delete
-{ path: '/users/:id', method: 'delete', handler: deleteUser }, // fonctionne
-{ path: '/adverts/:id', method: 'delete', handler: deleteAdvert }, // fonctionne
-{ path: '/users/companies/:siret', method: 'delete', handler: deleteCompany }, // fonctionne
+    //Routes delete
+    { path: '/users/:id', method: 'delete', handler: deleteUser }, // fonctionne
+    { path: '/adverts/:id', method: 'delete', handler: deleteAdvert }, // fonctionne
+    { path: '/users/companies/:siret', method: 'delete', handler: deleteCompany }, // fonctionne
 ]
 
 const protectedRoutes = [
