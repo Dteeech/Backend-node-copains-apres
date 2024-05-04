@@ -21,17 +21,16 @@ const router = express.Router()
 
 const publicRoutes = [
     //Routes get
-    { path: '/users', method: 'get', handler: getAllUsers }, // fonctionne
     { path: '/adverts', method: 'get', handler: getAllAdverts }, // fonctionne
     { path: '/users/:id/chats', method: 'get', handler: getUserChats }, // fontionne
     // test : http://localhost:3001/api/user-chats?id_emitter=1&id_receiver=2
-    { path: '/users/:id', method: 'get', handler: getUser }, // fonctionne
     { path: '/adverts/:id', method: 'get', handler: getAdvert }, // fonctionne
-    { path: '/users', method: 'get', handler: getAllUsers }, // fonctionne
     { path: '/users/private-individuals', method: 'get', handler: getPrivateIndividuals }, // ne fonctionne pas (pb route car affiche résultat même quand mis en commentaires)
     { path: '/users/companies', method: 'get', handler: getCompanies}, // ne fonctionne pas (pb route)
     { path: '/adverts/category/:category', method: 'get', handler: getAdvertByCategory }, // fonctionne
-
+    { path: '/users', method: 'get', handler: getAllUsers }, // fonctionne
+    { path: '/users/:id', method: 'get', handler: getUser }, // fonctionne
+   
 //Routes post
 { path: '/adverts', method: 'post', handler: createAdvert },
 { path: '/users', method: 'post', handler: createUser }, // fonctionne
@@ -54,4 +53,7 @@ const protectedRoutes = [
 publicRoutes.map(route => router[route.method](route.path, route.handler))
 router.use(isAuthenticated)
 protectedRoutes.map(route => router[route.method](route.path, route.handler))
+
 export default router
+
+// problème parce que la ligne 55 est appellée partout et dc erreur unauthorized quand on essaie de créer un compte
