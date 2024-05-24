@@ -33,9 +33,10 @@ const publicRoutes = [
    
 //Routes post
 { path: '/adverts', method: 'post', handler: createAdvert },
-{ path: '/users', method: 'post', handler: createUser }, // fonctionne
+// { path: '/users', method: 'post', handler: createUser }, // fonctionne
 { path: '/users/companies', method: 'post', handler: createCompany }, // fonctionne
-{path: '/create-user', method: 'post', handler: authController.register},
+// {path: '/create-user', method: 'post', handler: authController.register},
+{path: '/users', method: 'post', handler: authController.register},
 
     //Routes update
     { path: '/users/:id', method: 'put', handler: updateUser }, // fonctionne
