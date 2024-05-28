@@ -51,21 +51,21 @@ La connexion utilise un JSONWebToken.
 ### Tableau récapitulatif des ressources
 
 | Ressource | URL | Méthode HTTP | Paramètres d'URL/Variations | Commentaires |
-|-----------|-----------|-----------|
-| Création d'une annonce | /adverts | POST |  | |
-| Modification d'une annonce | /adverts/{id} | PUT | N'est accessible qu'à l'auteur de la réservation (ou un admin) |
-| Suppression d'une annonce | /adverts/{id} | DELETE | N'est accessible qu'à l'auteur de la réservation (ou un admin) |
+|---|---|---|---|---|
+| Création d'une annonce | /adverts | POST | | |
+| Modification d'une annonce | /adverts/{id} | PUT | N'est accessible qu'à l'auteur de la réservation (ou un admin) | |
+| Suppression d'une annonce | /adverts/{id} | DELETE | N'est accessible qu'à l'auteur de la réservation (ou un admin) | |
 | Liste des annonces | /adverts | GET | | |
 | Consulter une annonce | /adverts/{id} | GET | | |
 | Consulter le profil d'un utilisateur | /users/{id} | GET | | |
 | Accéder à tous les messages envoyés ou reçus par une personne | /users/{id}/chats | GET | | |
-| Envoyer un message |  | POST | | Cette route n'existe pas encore |
-| Créer un compte | /register | POST |  |  |
-| Mettre à jour ses données | /users/{id} | PUT |  |  |
-| Supprimer son compte | /users/{id} | DELETE |  |  |
-| Créer un compte entreprise | /register/companies | POST |  |  |
-| Supprimer son compte entreprise | /users/company/{siret} | DELETE |  |  |
-| Identification | /login | POST |  |  |
+| Envoyer un message | | POST | | Cette route n'existe pas encore |
+| Créer un compte | /register | POST | | |
+| Mettre à jour ses données | /users/{id} | PUT | | |
+| Supprimer son compte | /users/{id} | DELETE | | |
+| Créer un compte entreprise | /register/companies | POST | | |
+| Supprimer son compte entreprise | /users/company/{siret} | DELETE | | |
+| Identification | /login | POST | | |
 
 ## Mise en ligne du code (à l'attention des développeurs)
 - Push le code sur github
