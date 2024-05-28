@@ -31,12 +31,12 @@ const publicRoutes = [
     { path: '/users', method: 'get', handler: getAllUsers }, // fonctionne
     { path: '/users/:id', method: 'get', handler: getUser }, // fonctionne
    
-//Routes post
-{ path: '/adverts', method: 'post', handler: createAdvert },
-// { path: '/users', method: 'post', handler: createUser }, // fonctionne
-{ path: '/users/companies', method: 'post', handler: createCompany }, // fonctionne
-// {path: '/create-user', method: 'post', handler: authController.register},
-{path: '/users', method: 'post', handler: authController.register},
+    //Routes post
+    { path: '/adverts', method: 'post', handler: createAdvert },
+    // { path: '/users', method: 'post', handler: createUser }, // fonctionne
+    { path: '/register/companies', method: 'post', handler: createCompany }, // fonctionne
+    // {path: '/create-user', method: 'post', handler: authController.register},
+    {path: '/register', method: 'post', handler: authController.register},
 
     //Routes update
     { path: '/users/:id', method: 'put', handler: updateUser }, // fonctionne
