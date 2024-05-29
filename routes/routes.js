@@ -37,6 +37,7 @@ const publicRoutes = [
     { path: '/register/companies', method: 'post', handler: createCompany }, // fonctionne
     // {path: '/create-user', method: 'post', handler: authController.register},
     {path: '/register', method: 'post', handler: authController.register},
+    {path: '/login', method: 'post', handler: authController.login},
 
     //Routes update
     { path: '/users/:id', method: 'put', handler: updateUser }, // fonctionne
@@ -52,7 +53,7 @@ const protectedRoutes = [
 ]
 
 publicRoutes.map(route => router[route.method](route.path, route.handler))
-router.use(isAuthenticated)
+// router.use(isAuthenticated)
 protectedRoutes.map(route => router[route.method](route.path, route.handler))
 
 export default router
